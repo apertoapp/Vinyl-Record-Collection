@@ -1,177 +1,192 @@
-# **Vinyl Record Collection** 🎶
+# 🎵 Vinyl Record Collection
 
-*A mobile app to manage your vinyl records collection and wishlist.*
-
-Vinyl Record Collection Logo *(À remplacer par votre logo)*
+**Vinyl Record Collection** est une application mobile et web conçue pour aider les collectionneurs à gérer leur discothèque de vinyles et leur liste de souhaits. Développée avec **Vue.js** pour le frontend et **Firebase** pour le backend, cette application offre une expérience intuitive et sécurisée pour organiser, rechercher et suivre vos vinyles préférés.
 
 ---
 
-## **📌 About the Project**
+## 📌 **Fonctionnalités**
 
-**Vinyl Record Collection** is a mobile application designed for vinyl enthusiasts to:
+### ✅ **Gestion de la Discothèque**
 
-- **Track their vinyl collection** with detailed information.
-- **Manage a wishlist** of records they want to acquire.
-- **Organize, search, and filter** their collection effortlessly.
+- **Ajout de vinyles** : Saisie manuelle des informations (artiste, album, année, label, genre, état, valeur estimée, notes personnelles, photo de la pochette).
+- **Liste des vinyles** : Affichage sous forme de liste ou de grille avec vignettes des pochettes.
+- **Recherche avancée** : Filtres par artiste, album, genre, année ou état.
+- **Fiche détaillée** : Visualisation et modification des informations d'un vinyle.
+- **Tri personnalisable** : Par artiste, année, genre ou état.
 
-This app is built with **React Native** for cross-platform compatibility (iOS & Android) and uses **Firebase** for authentication and data storage.
+### ✅ **Liste de Souhaits**
 
----
+- **Ajout de vinyles souhaités** : Avec priorité (Faible, Moyenne, Élevée).
+- **Liste dédiée** : Affichage et gestion des vinyles souhaités.
+- **Recherche et filtres** : Identiques à ceux de la discothèque.
 
-## **✨ Features**
+### ✅ **Compte Utilisateur**
 
-### **📀 Core Features (MVP)**
+- **Inscription/Connexion** : Création de compte via email et mot de passe.
+- **Profil utilisateur** : Nom d'utilisateur, photo de profil et réinitialisation du mot de passe.
+- **Sauvegarde des données** : Stockage sécurisé dans Firebase.
 
-- **Add/Edit/Delete Vinyl Records**
-  - Artist, album title, release year, label, genre, condition, estimated value, and personal notes.
-  - Upload cover art images.
-- **Browse Your Collection**
-  - View records in a list or grid layout.
-  - Sort by artist, year, genre, or condition.
-- **Search & Filter**
-  - Search by artist, album, or genre.
-  - Filter by genre, condition, or year.
-- **Wishlist Management**
-  - Add records to your wishlist with priority levels (Low, Medium, High).
-  - View and manage your wishlist separately.
-- **User Accounts**
-  - Sign up and log in with email/password.
-  - Reset password functionality.
-- **Data Export/Import**
-  - Export your collection as **CSV** or **JSON**.
-  - Import records from a **CSV/JSON** file.
+### ✅ **Export/Import**
 
-### **🚀 Upcoming Features**
-
-- **Barcode/QR Code Scanning** – Quickly add records by scanning.
-- **Discogs & Spotify Integration** – Fetch metadata and preview tracks.
-- **Cloud Sync** – Backup and sync your collection across devices.
-- **Community Features** – Share collections, trade records, and discuss with other users.
-- **Price Tracking** – Monitor the value of your collection over time.
-- **Advanced Statistics** – Visualize your collection by genre, artist, or condition.
+- **Export** : Export de la collection au format **CSV** ou **JSON**.
+- **Import** : Import de données depuis un fichier **CSV** ou **JSON**.
 
 ---
 
-## **🛠️ Built With**
+## 🛠 **Technologies Utilisées**
 
+### Frontend
 
-| Category     | Technologies                                                                           |
-| ------------ | -------------------------------------------------------------------------------------- |
-| **Frontend** | [React Native](https://reactnative.dev/) (TypeScript)                                  |
-| **Backend**  | [Firebase](https://firebase.google.com/) (Authentication, Firestore)                   |
-| **Database** | [Firebase Firestore](https://firebase.google.com/docs/firestore)                       |
-| **Storage**  | [Firebase Storage](https://firebase.google.com/docs/storage) (for images)              |
-| **UI/UX**    | [React Navigation](https://reactnavigation.org/), [NativeBase](https://nativebase.io/) |
-| **Testing**  | [Jest](https://jestjs.io/), [Detox](https://github.com/wix/Detox)                      |
+- **Framework** : [Vue.js 3](https://vuejs.org/) (Composition API)
+- **UI Library** : [Quasar Framework](https://quasar.dev/) (pour une expérience mobile et desktop optimisée)
+- **State Management** : [Pinia](https://pinia.vuejs.org/) (pour la gestion d'état)
+- **Routing** : [Vue Router](https://router.vuejs.org/)
+- **Styling** : CSS/SCSS avec [Tailwind CSS](https://tailwindcss.com/) (optionnel)
 
+### Backend
+
+- **Base de données** : [Firebase Realtime Database](https://firebase.google.com/docs/database) (pour le stockage des données)
+- **Authentification** : [Firebase Authentication](https://firebase.google.com/docs/auth) (email/mot de passe)
+- **Stockage** : [Firebase Storage](https://firebase.google.com/docs/storage) (pour les images des pochettes)
+
+### Outils de Développement
+
+- **Build Tool** : [Vite](https://vitejs.dev/)
+- **Testing** : [Vitest](https://vitest.dev/) (pour les tests unitaires)
+- **Linting** : [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/)
 
 ---
 
-## **📥 Getting Started**
+## 🚀 **Installation et Exécution**
 
-### **Prerequisites**
+### Prérequis
 
-- **Node.js** (v16 or later) – [Download Node.js](https://nodejs.org/)
-- **npm** or **yarn** – [Install npm](https://www.npmjs.com/get-npm) / [Install yarn](https://yarnpkg.com/getting-started)
-- **React Native CLI** – Install globally:
+- Node.js (version 16 ou supérieure)
+- npm ou yarn
+- Un projet Firebase configuré (voir [Configuration Firebase](#-configuration-firebase))
+
+### Étapes d'installation
+
+1. **Cloner le dépôt**
   ```bash
-  npm install -g react-native-cli
-  ```
-- **Android Studio** (for Android) / **Xcode** (for iOS)
-- **Firebase Project** – [Set up Firebase](https://firebase.google.com/docs/web/setup)
-
-### **Installation**
-
-1. **Clone the repository:**
-  ```bash
-   git clone https://github.com/your-username/vinyl-record-collection.git
+   git clone https://github.com/votre-utilisateur/vinyl-record-collection.git
    cd vinyl-record-collection
   ```
-2. **Install dependencies:**
+2. **Installer les dépendances**
   ```bash
    npm install
-   # or
+   # ou
    yarn install
   ```
-3. **Set up Firebase:**
-  - Create a Firebase project at [Firebase Console](https://console.firebase.google.com/).
-  - Enable **Authentication (Email/Password)** and **Firestore Database**.
-  - Download your `google-services.json` (Android) and `GoogleService-Info.plist` (iOS) files.
-  - Place them in:
-    - Android: `android/app/google-services.json`
-    - iOS: `ios/GoogleService-Info.plist`
-4. **Configure environment variables:**
-  Create a `.env` file in the root directory and add your Firebase config:
-5. **Run the app:**
-  - **Android:**
-  - **iOS:**
-    ```bash
-    npx react-native run-ios
+3. **Configurer Firebase**
+  - Créez un projet sur [Firebase Console](https://console.firebase.google.com/).
+  - Activez **Authentication** (méthode email/mot de passe) et **Realtime Database**.
+  - Copiez les clés de configuration de votre projet Firebase dans un fichier `.env` à la racine du projet :
+    ```env
+    VITE_FIREBASE_API_KEY=votre_api_key
+    VITE_FIREBASE_AUTH_DOMAIN=votre_auth_domain
+    VITE_FIREBASE_PROJECT_ID=votre_project_id
+    VITE_FIREBASE_STORAGE_BUCKET=votre_storage_bucket
+    VITE_FIREBASE_MESSAGING_SENDER_ID=votre_messaging_sender_id
+    VITE_FIREBASE_APP_ID=votre_app_id
+    VITE_FIREBASE_DATABASE_URL=votre_database_url
     ```
+4. **Lancer l'application en mode développement**
+  ```bash
+   npm run dev
+   # ou
+   yarn dev
+  ```
+   L'application sera accessible à l'adresse `http://localhost:5173`.
 
 ---
 
-## **📂 Project Structure**
+## 📂 **Structure du Projet**
 
 ```
 vinyl-record-collection/
-├── android/          # Android native code
-├── ios/              # iOS native code
+├── public/                  # Fichiers statiques
 ├── src/
-│   ├── assets/       # Images, fonts, etc.
-│   ├── components/   # Reusable UI components
-│   ├── screens/      # App screens
-│   ├── navigation/   # Navigation setup
-│   ├── services/     # Firebase & API services
-│   ├── utils/        # Helper functions
-│   ├── types/        # TypeScript types
-│   └── App.tsx       # Main app component
-├── .env              # Environment variables
-├── package.json      # Project dependencies
-└── README.md         # This file
+│   ├── assets/              # Images, polices, etc.
+│   ├── components/          # Composants Vue réutilisables
+│   ├── composables/         # Logique réutilisable (Composition API)
+│   ├── layouts/             # Mises en page (ex: layout principal)
+│   ├── pages/               # Pages de l'application
+│   │   ├── HomePage.vue     # Page d'accueil
+│   │   ├── CollectionPage.vue # Page de la discothèque
+│   │   ├── WishlistPage.vue  # Page de la liste de souhaits
+│   │   ├── LoginPage.vue    # Page de connexion
+│   │   └── ProfilePage.vue  # Page du profil utilisateur
+│   ├── router/              # Configuration du routeur
+│   ├── stores/              # Stores Pinia
+│   ├── utils/               # Fonctions utilitaires
+│   ├── App.vue              # Composant racine
+│   └── main.js              # Point d'entrée de l'application
+├── .env                     # Variables d'environnement
+├── vite.config.js           # Configuration de Vite
+└── package.json             # Dépendances et scripts
 ```
 
 ---
 
-## **🤝 Contributing**
+## 🔧 **Configuration Firebase**
 
-Contributions are welcome! Here’s how you can help:
-
-1. **Fork the repository** and create a new branch (`git checkout -b feature/your-feature`).
-2. **Commit your changes** (`git commit -m "Add your feature"`).
-3. **Push to the branch** (`git push origin feature/your-feature`).
-4. **Open a Pull Request** with a clear description of your changes.
-
-### **Contribution Guidelines**
-
-- Follow the existing code style.
-- Add tests for new features.
-- Update the documentation if needed.
-
----
-
-## **🐛 Reporting Issues**
-
-If you find a bug or have a feature request, please [open an issue](https://github.com/your-username/vinyl-record-collection/issues) and include:
-
-- A clear description of the issue.
-- Steps to reproduce (if applicable).
-- Screenshots (if helpful).
+1. **Créer un projet Firebase**
+  - Allez sur [Firebase Console](https://console.firebase.google.com/) et créez un nouveau projet.
+2. **Activer les services nécessaires**
+  - **Authentication** : Activez la méthode de connexion par **email/mot de passe**.
+  - **Realtime Database** : Créez une base de données en mode **test** (pour le développement) ou **verrouillé** (pour la production). Configurez les règles de sécurité comme suit pour le développement :
+    ```json
+    {
+      "rules": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    }
+    ```
+  - **Storage** : Activez Firebase Storage pour stocker les images des pochettes.
+3. **Ajouter les clés de configuration**
+  - Dans votre projet Firebase, allez dans **Paramètres du projet** > **Vos applications** > **Ajouter une application web**.
+  - Copiez les clés de configuration et ajoutez-les dans votre fichier `.env` (voir [Installation](#-installation-et-exécution)).
 
 ---
 
-## **📜 License**
+## 📱 **Fonctionnalités Futures**
 
-This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
-
----
-
-**💬 Contact**  
-For questions or feedback, reach out to:
-
-- **Email:** [your-email@example.com](mailto:your-email@example.com)
-- **GitHub:** [@your-username](https://github.com/your-username)
+- **Scan de code-barres** : Ajout de vinyles via scan de code-barres ou QR code.
+- **Reconnaissance visuelle** : Ajout de vinyles via une photo de la pochette.
+- **Intégration avec Discogs** : Récupération automatique des métadonnées.
+- **Synchronisation cloud** : Sauvegarde automatique sur Firebase.
+- **Alertes de disponibilité** : Notifications si un vinyle souhaité est disponible en ligne.
+- **Communauté** : Partage de collections et échanges entre utilisateurs.
 
 ---
 
-*Happy collecting! 🎵*
+## 🤝 **Contribution**
+
+Les contributions sont les bienvenues ! Voici comment contribuer :
+
+1. Forker le projet.
+2. Créer une branche pour votre fonctionnalité (`git checkout -b feature/ma-fonctionnalité`).
+3. Commiter vos modifications (`git commit -m "Ajout de ma fonctionnalité"`).
+4. Pousser vers la branche (`git push origin feature/ma-fonctionnalité`).
+5. Ouvrir une **Pull Request**.
+
+---
+
+## 📄 **Licence**
+
+Ce projet est sous licence **MIT**. Consultez le fichier [LICENSE](LICENSE) pour plus de détails.
+
+---
+
+## 📬 **Contact**
+
+Pour toute question ou suggestion, n'hésitez pas à ouvrir une **Issue** sur GitHub ou à me contacter via :
+
+- **Email** : [apertoapp@gmail.com](mailto:apertoapp@gmail.com)
+- **GitHub** : [@apertoapp](https://github.com/apertoapp)
+
+---
+
+**✨ Merci d'utiliser Vinyl Record Collection !** 🎵
