@@ -1,176 +1,200 @@
 # 🎵 Vinyl Record Collection
 
-**Vinyl Record Collection** est une application mobile et web conçue pour aider les collectionneurs à gérer leur discothèque de vinyles et leur liste de souhaits. Développée avec **Vue.js** pour le frontend et **Firebase** pour le backend, cette application offre une expérience intuitive et sécurisée pour organiser, rechercher et suivre vos vinyles préférés.
+**Vinyl Record Collection** est une application mobile développée avec **Flutter** et propulsée par un backend **Firebase**. Elle permet aux collectionneurs de vinyles de gérer simplement leur discothèque personnelle, leur liste de souhaits et les principales informations associées à chaque disque, tout en s'appuyant sur des services backend modernes comme l'authentification, la base de données cloud, le stockage de médias et les fonctions serveur de Firebase [cite:17][cite:21][cite:28].
 
 ---
 
-## 📌 **Fonctionnalités**
+## Aperçu
 
-### ✅ **Gestion de la Discothèque**
-
-- **Ajout de vinyles** : Saisie manuelle des informations (artiste, album, année, label, genre, état, valeur estimée, notes personnelles, photo de la pochette).
-- **Liste des vinyles** : Affichage sous forme de liste ou de grille avec vignettes des pochettes.
-- **Recherche avancée** : Filtres par artiste, album, genre, année ou état.
-- **Fiche détaillée** : Visualisation et modification des informations d'un vinyle.
-- **Tri personnalisable** : Par artiste, année, genre ou état.
-
-### ✅ **Liste de Souhaits**
-
-- **Ajout de vinyles souhaités** : Avec priorité (Faible, Moyenne, Élevée).
-- **Liste dédiée** : Affichage et gestion des vinyles souhaités.
-- **Recherche et filtres** : Identiques à ceux de la discothèque.
-
-### ✅ **Compte Utilisateur**
-
-- **Inscription/Connexion** : Création de compte via email et mot de passe.
-- **Profil utilisateur** : Nom d'utilisateur, photo de profil et réinitialisation du mot de passe.
-- **Sauvegarde des données** : Stockage sécurisé dans Firebase.
-
-### ✅ **Export/Import**
-
-- **Export** : Export de la collection au format **CSV** ou **JSON**.
-- **Import** : Import de données depuis un fichier **CSV** ou **JSON**.
+L'application a été pensée pour offrir une expérience fluide aux passionnés de musique qui souhaitent centraliser leurs vinyles possédés et ceux qu'ils recherchent encore. Grâce à Flutter, le projet cible une base de code unique pour Android et iOS, tandis que Firebase fournit les briques backend nécessaires à l'authentification, à la synchronisation des données, au stockage des pochettes et à l'exécution de logique métier côté serveur [cite:17][cite:21][cite:28].
 
 ---
 
-## 🛠 **Technologies Utilisées**
+## 📌 Fonctionnalités principales
 
-### Frontend
+### ✅ Gestion de la collection
 
-- **Framework** : [Vue.js 3](https://vuejs.org/) (Composition API)
-- **UI Library** : [Quasar Framework](https://quasar.dev/) (pour une expérience mobile et desktop optimisée)
-- **State Management** : [Pinia](https://pinia.vuejs.org/) (pour la gestion d'état)
-- **Routing** : [Vue Router](https://router.vuejs.org/)
-- **Styling** : CSS/SCSS avec [Tailwind CSS](https://tailwindcss.com/) (optionnel)
+L'application permet de créer et maintenir une collection personnelle de vinyles avec des fiches détaillées. Chaque entrée peut contenir des métadonnées comme l'artiste, le titre, l'année, le label, les genres, les notes personnelles, l'état du disque, l'état de la pochette, le prix d'achat et d'autres informations utiles à un collectionneur [cite:22][cite:15].
 
-### Backend
+Fonctionnalités associées :
+- Ajout manuel d'un vinyle.
+- Modification d'une fiche existante.
+- Suppression d'un vinyle de la collection.
+- Consultation du détail d'une édition.
+- Classement et organisation de la discothèque.
 
-- **Base de données** : [Firebase Realtime Database](https://firebase.google.com/docs/database) (pour le stockage des données)
-- **Authentification** : [Firebase Authentication](https://firebase.google.com/docs/auth) (email/mot de passe)
-- **Stockage** : [Firebase Storage](https://firebase.google.com/docs/storage) (pour les images des pochettes)
+### ✅ Gestion de la wishlist
 
-### Outils de Développement
+L'application propose une liste de souhaits distincte de la collection principale afin de suivre les disques recherchés. Cette séparation entre éléments possédés et éléments désirés facilite le suivi des achats à venir et la priorisation des recherches [cite:22].
 
-- **Build Tool** : [Vite](https://vitejs.dev/)
-- **Testing** : [Vitest](https://vitest.dev/) (pour les tests unitaires)
-- **Linting** : [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/)
+Fonctionnalités associées :
+- Ajout d'un vinyle à la wishlist.
+- Déplacement d'un vinyle de la wishlist vers la collection.
+- Définition d'une priorité ou d'un prix cible.
+- Suppression d'un élément de la liste de souhaits.
+
+### ✅ Recherche et consultation
+
+L'application permet de retrouver rapidement un disque au sein de la collection ou de la wishlist grâce à des mécanismes de recherche et de filtrage. Les métadonnées issues de catalogues spécialisés comme Discogs peuvent également servir à enrichir les fiches et à fiabiliser les informations affichées [cite:22][cite:15].
+
+Fonctionnalités associées :
+- Recherche par artiste, album, label ou année.
+- Filtres sur les genres, formats ou statuts.
+- Tri alphabétique, chronologique ou personnalisé.
+- Consultation d'une fiche détaillée avec pochette et informations d'édition.
+
+### ✅ Enrichissement des données via Discogs
+
+Le projet peut s'appuyer sur l'API Discogs pour récupérer des informations de release, des identifiants et des images, ce qui simplifie l'ajout d'un disque et améliore la qualité des métadonnées. L'accès authentifié à Discogs est notamment utile pour récupérer certaines ressources comme les images de releases [cite:22][cite:15].
+
+Fonctionnalités associées :
+- Recherche d'un album depuis une source externe.
+- Préremplissage des champs à partir des données disponibles.
+- Sélection d'une édition précise.
+- Rattachement d'un identifiant externe à la fiche locale.
 
 ---
 
-## 🚀 **Installation et Exécution**
+## 🚀 Stack technique
+
+| Couche | Technologie | Rôle |
+|--------|-------------|------|
+| Frontend mobile | Flutter | Développement cross-platform Android/iOS avec une base de code unique [cite:17][cite:28] |
+| Langage | Dart | Implémentation de l'interface, de la logique applicative et de l'intégration Flutter [cite:17] |
+| Authentification | Firebase Authentication | Gestion sécurisée des comptes utilisateurs et des sessions [cite:21][cite:24] |
+| Base de données | Cloud Firestore | Stockage et synchronisation des données applicatives [cite:21][cite:24] |
+| Stockage médias | Firebase Cloud Storage | Hébergement des pochettes, images et médias associés [cite:29] |
+| Backend serverless | Cloud Functions for Firebase | Exécution de logique métier et traitements backend sans serveur dédié [cite:21][cite:27] |
+
+---
+
+## 🛠 Architecture fonctionnelle
+
+L'application repose sur une architecture mobile connectée à Firebase pour séparer clairement l'interface utilisateur, la logique métier et la persistance des données. Flutter gère les écrans et les interactions côté client, tandis que Firebase centralise les services d'identité, de base de données, de stockage et d'automatisation backend [cite:17][cite:21][cite:27].
+
+### Composants backend Firebase
+
+- **Firebase Authentication** : création de compte, connexion, gestion de session et sécurisation des accès aux données [cite:21][cite:24].
+- **Cloud Firestore** : stockage des collections, wishlists, profils utilisateurs et métadonnées applicatives avec synchronisation cloud [cite:21][cite:24].
+- **Cloud Storage** : stockage des images de pochettes ou médias liés aux vinyles [cite:29].
+- **Cloud Functions** : traitements backend comme l'enrichissement de données, la validation, les notifications ou les tâches asynchrones déclenchées par des événements [cite:21][cite:27].
+
+---
+
+## 📌 Fonctionnalités côté utilisateur
+
+### Compte utilisateur
+
+Selon la configuration retenue dans le projet, un utilisateur peut créer un compte, se connecter et retrouver ses données sur plusieurs appareils. Firebase Authentication prend en charge plusieurs méthodes d'authentification et s'intègre naturellement aux règles de sécurité Firestore pour restreindre l'accès aux données selon l'identité connectée [cite:21][cite:24].
+
+### Synchronisation cloud
+
+Les données de collection et de wishlist peuvent être centralisées dans Firestore afin de permettre une persistance distante et une synchronisation entre appareils. Firestore est conçu pour la synchronisation de données dans des applications mobiles et s'intègre à des usages temps réel ou quasi temps réel selon l'architecture choisie [cite:21][cite:24].
+
+### Gestion des médias
+
+Les pochettes de vinyles et autres images associées peuvent être stockées dans Firebase Cloud Storage, ce qui évite d'alourdir directement la base documentaire. Ce service complète Firestore en prenant en charge les fichiers tout en restant compatible avec les règles de sécurité Firebase [cite:29].
+
+---
+
+## 📂 Structure suggérée du dépôt
+
+La structure exacte peut varier, mais un dépôt Flutter/Firebase est généralement organisé avec le code applicatif Flutter d'un côté et les fonctions backend Firebase de l'autre. Dans les projets GitHub intégrant une application mobile et Firebase, il est courant de séparer l'application principale et le dossier `functions/` pour la logique serverless [cite:20][cite:18].
+
+```text
+.
+├── android/
+├── ios/
+├── lib/
+│   ├── core/
+│   ├── features/
+│   ├── shared/
+│   └── main.dart
+├── test/
+├── assets/
+├── firebase.json
+├── firestore.rules
+├── storage.rules
+├── functions/
+└── pubspec.yaml
+```
+
+---
+
+## Installation
 
 ### Prérequis
 
-- Node.js (version 16 ou supérieure)
-- npm ou yarn
-- Un projet Firebase configuré (voir [Configuration Firebase](#-configuration-firebase))
+- Flutter installé sur la machine de développement.
+- SDK Android et/ou environnement Xcode configuré selon la plateforme ciblée.
+- Un projet Firebase configuré.
+- La CLI FlutterFire ou la configuration Firebase nécessaire au projet [cite:17][cite:28].
 
-### Étapes d'installation
+### Étapes
 
-1. **Cloner le dépôt**
-  ```bash
-   git clone https://github.com/votre-utilisateur/vinyl-record-collection.git
-   cd vinyl-record-collection
-  ```
-2. **Installer les dépendances**
-  ```bash
-   npm install
-   # ou
-   yarn install
-  ```
-3. **Configurer Firebase**
-  - Créez un projet sur [Firebase Console](https://console.firebase.google.com/).
-  - Activez **Authentication** (méthode email/mot de passe) et **Realtime Database**.
-  - Copiez les clés de configuration de votre projet Firebase dans un fichier `.env` à la racine du projet :
-    ```env
-    VITE_FIREBASE_API_KEY=votre_api_key
-    VITE_FIREBASE_AUTH_DOMAIN=votre_auth_domain
-    VITE_FIREBASE_PROJECT_ID=votre_project_id
-    VITE_FIREBASE_STORAGE_BUCKET=votre_storage_bucket
-    VITE_FIREBASE_MESSAGING_SENDER_ID=votre_messaging_sender_id
-    VITE_FIREBASE_APP_ID=votre_app_id
-    VITE_FIREBASE_DATABASE_URL=votre_database_url
-    ```
-4. **Lancer l'application en mode développement**
-  ```bash
-   npm run dev
-   # ou
-   yarn dev
-  ```
-   L'application sera accessible à l'adresse `http://localhost:5173`.
-
----
-
-## 📂 **Structure du Projet**
-
-```
-vinyl-record-collection/
-├── public/                  # Fichiers statiques
-├── src/
-│   ├── assets/              # Images, polices, etc.
-│   ├── components/          # Composants Vue réutilisables
-│   ├── composables/         # Logique réutilisable (Composition API)
-│   ├── layouts/             # Mises en page (ex: layout principal)
-│   ├── pages/               # Pages de l'application
-│   │   ├── HomePage.vue     # Page d'accueil
-│   │   ├── CollectionPage.vue # Page de la discothèque
-│   │   ├── WishlistPage.vue  # Page de la liste de souhaits
-│   │   ├── LoginPage.vue    # Page de connexion
-│   │   └── ProfilePage.vue  # Page du profil utilisateur
-│   ├── router/              # Configuration du routeur
-│   ├── stores/              # Stores Pinia
-│   ├── utils/               # Fonctions utilitaires
-│   ├── App.vue              # Composant racine
-│   └── main.js              # Point d'entrée de l'application
-├── .env                     # Variables d'environnement
-├── vite.config.js           # Configuration de Vite
-└── package.json             # Dépendances et scripts
+```bash
+git clone <url-du-depot>
+cd <nom-du-depot>
+flutter pub get
+flutterfire configure
+flutter run
 ```
 
----
-
-## 🔧 **Configuration Firebase**
-
-1. **Créer un projet Firebase**
-  - Allez sur [Firebase Console](https://console.firebase.google.com/) et créez un nouveau projet.
-2. **Activer les services nécessaires**
-  - **Authentication** : Activez la méthode de connexion par **email/mot de passe**.
-  - **Realtime Database** : Créez une base de données en mode **test** (pour le développement) ou **verrouillé** (pour la production). Configurez les règles de sécurité comme suit pour le développement :
-    ```json
-    {
-      "rules": {
-        ".read": "auth != null",
-        ".write": "auth != null"
-      }
-    }
-    ```
-  - **Storage** : Activez Firebase Storage pour stocker les images des pochettes.
-3. **Ajouter les clés de configuration**
-  - Dans votre projet Firebase, allez dans **Paramètres du projet** > **Vos applications** > **Ajouter une application web**.
-  - Copiez les clés de configuration et ajoutez-les dans votre fichier `.env` (voir [Installation](#-installation-et-exécution)).
+L'initialisation Firebase dans un projet Flutter passe par les plugins FlutterFire et la configuration du projet Firebase avant l'exécution de l'application. La documentation FlutterFire décrit précisément ce rôle de passerelle entre Flutter et les services Firebase [cite:17][cite:28].
 
 ---
 
-## 📱 **Fonctionnalités Futures**
+## Configuration Firebase
 
-- **Scan de code-barres** : Ajout de vinyles via scan de code-barres ou QR code.
-- **Reconnaissance visuelle** : Ajout de vinyles via une photo de la pochette.
-- **Intégration avec Discogs** : Récupération automatique des métadonnées.
-- **Synchronisation cloud** : Sauvegarde automatique sur Firebase.
-- **Alertes de disponibilité** : Notifications si un vinyle souhaité est disponible en ligne.
-- **Communauté** : Partage de collections et échanges entre utilisateurs.
+Le backend Firebase doit au minimum fournir :
+- un projet Firebase actif ;
+- Firebase Authentication si une connexion utilisateur est requise ;
+- une base Cloud Firestore ;
+- éventuellement Cloud Storage pour les images ;
+- éventuellement Cloud Functions pour la logique serveur complémentaire [cite:21][cite:24][cite:27][cite:29].
+
+Des règles de sécurité doivent être mises en place pour limiter l'accès aux documents Firestore et aux fichiers Storage selon l'utilisateur authentifié. Firebase Authentication s'intègre justement avec les règles de sécurité pour restreindre les opérations de lecture et d'écriture en fonction du statut d'authentification [cite:21].
 
 ---
 
-## 🤝 **Contribution**
+## Exemples de fonctionnalités métier
 
-Les contributions sont les bienvenues ! Voici comment contribuer :
+L'application peut inclure les écrans ou modules suivants :
+- tableau de bord de la collection ;
+- liste des vinyles possédés ;
+- liste de souhaits ;
+- détail d'un vinyle ;
+- recherche locale et distante ;
+- import ou enrichissement via Discogs ;
+- profil utilisateur et paramètres ;
+- statistiques simples sur la collection [cite:22][cite:15].
 
-1. Forker le projet.
-2. Créer une branche pour votre fonctionnalité (`git checkout -b feature/ma-fonctionnalité`).
-3. Commiter vos modifications (`git commit -m "Ajout de ma fonctionnalité"`).
-4. Pousser vers la branche (`git push origin feature/ma-fonctionnalité`).
-5. Ouvrir une **Pull Request**.
+---
+
+## Sécurité et qualité
+
+Le choix de Firebase permet de s'appuyer sur des services managés pour l'authentification, le stockage et la logique backend, ce qui réduit la charge d'infrastructure tout en renforçant la scalabilité. Cloud Functions exécute du code backend en réponse à des événements Firebase ou à des requêtes HTTPS, sans nécessiter l'administration d'un serveur dédié [cite:21][cite:27].
+
+Des outils complémentaires comme Crashlytics, Remote Config ou des parcours avancés autour de la suppression de données et de la sécurité peuvent également être intégrés dans un projet Flutter/Firebase plus mature. La documentation avancée Firebase pour Flutter met notamment en avant l'authentification, Firestore, Remote Config, Crashlytics et des scénarios de sécurité renforcée comme le MFA [cite:24].
+
+---
+
+## Roadmap possible
+
+Évolutions envisageables :
+- scan de code-barres ;
+- notifications push ;
+- recommandations de disques ;
+- partage de collection ;
+- export CSV ou PDF ;
+- mode hors ligne enrichi ;
+- statistiques avancées et suivi de valeur de collection [cite:24][cite:25].
+
+---
+
+## 🤝 Contribution
+
+Les contributions peuvent couvrir l'amélioration des fonctionnalités Flutter, de l'expérience utilisateur, de l'intégration Firebase et des règles de sécurité. Toute évolution touchant à Firestore, Storage ou Cloud Functions doit rester cohérente avec l'architecture backend déjà en place et avec les bonnes pratiques du projet [cite:21][cite:27][cite:29].
 
 ---
 
