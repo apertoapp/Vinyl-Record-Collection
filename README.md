@@ -1,408 +1,184 @@
 # 🎵 Vinyl Record Collection
 
-> Application mobile Flutter & Firebase pour gérer votre discothèque vinyle personnelle.
-
-![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?style=flat&logo=flutter)
-![Firebase](https://img.shields.io/badge/Firebase-Firestore%20%7C%20Auth-FFCA28?style=flat&logo=firebase)
-![Dart](https://img.shields.io/badge/Dart-3.x-0175C2?style=flat&logo=dart)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat)
-![Status](https://img.shields.io/badge/Status-Beta-orange?style=flat)
+**Vinyl Record Collection** est une application mobile et web conçue pour aider les collectionneurs à gérer leur discothèque de vinyles et leur liste de souhaits. Développée avec **Vue.js** pour le frontend et **Firebase** pour le backend, cette application offre une expérience intuitive et sécurisée pour organiser, rechercher et suivre vos vinyles préférés.
 
 ---
 
-## 📖 Table des matières
+## 📌 **Fonctionnalités**
 
-- [Présentation](#-présentation)
-- [Fonctionnalités](#-fonctionnalités)
-- [Architecture](#-architecture)
-- [Prérequis](#-prérequis)
-- [Installation](#-installation)
-- [Configuration Firebase](#-configuration-firebase)
-- [Structure du projet](#-structure-du-projet)
-- [API externes](#-api-externes)
-- [Sécurité & RGPD](#-sécurité--rgpd)
-- [Tests](#-tests)
-- [Roadmap](#-roadmap)
-- [Contribuer](#-contribuer)
-- [Licence](#-licence)
+### ✅ **Gestion de la Discothèque**
 
----
+- **Ajout de vinyles** : Saisie manuelle des informations (artiste, album, année, label, genre, état, valeur estimée, notes personnelles, photo de la pochette).
+- **Liste des vinyles** : Affichage sous forme de liste ou de grille avec vignettes des pochettes.
+- **Recherche avancée** : Filtres par artiste, album, genre, année ou état.
+- **Fiche détaillée** : Visualisation et modification des informations d'un vinyle.
+- **Tri personnalisable** : Par artiste, année, genre ou état.
 
-## 🎯 Présentation
+### ✅ **Liste de Souhaits**
 
-**Vinyl Record Collection** est une application mobile cross-platform (iOS & Android) développée avec **Flutter** et **Firebase**, destinée aux collectionneurs de vinyles. Elle centralise la gestion de la discothèque personnelle, la liste de souhaits et les interactions avec la communauté de collectionneurs.
+- **Ajout de vinyles souhaités** : Avec priorité (Faible, Moyenne, Élevée).
+- **Liste dédiée** : Affichage et gestion des vinyles souhaités.
+- **Recherche et filtres** : Identiques à ceux de la discothèque.
 
-L'application répond à trois besoins fondamentaux :
-- **Inventorier** sa collection physique de manière rapide et précise (scan code-barres, reconnaissance visuelle)
-- **Suivre** les vinyles souhaités avec alertes de disponibilité et historique des prix
-- **Partager** et **échanger** au sein d'une communauté de passionnés
+### ✅ **Compte Utilisateur**
 
----
+- **Inscription/Connexion** : Création de compte via email et mot de passe.
+- **Profil utilisateur** : Nom d'utilisateur, photo de profil et réinitialisation du mot de passe.
+- **Sauvegarde des données** : Stockage sécurisé dans Firebase.
 
-## ✨ Fonctionnalités
+### ✅ **Export/Import**
 
-### 🗄️ Ma Collection (Discothèque)
-
-| Fonctionnalité | Description |
-|---|---|
-| Ajout manuel | Saisie libre de toutes les métadonnées d'un vinyle |
-| Scan code-barres / QR | Identification automatique via la caméra du téléphone |
-| Reconnaissance visuelle | Ajout d'un vinyle par photo de pochette |
-| Fiche détaillée | Artiste, album, année, label, genre, état, valeur estimée, notes, photo |
-| Catégorisation | Par genre, artiste, année, état ou valeur |
-| Recherche avancée | Filtres combinés multi-critères |
-| Statistiques | Nombre de vinyles, valeur totale, répartition par genre/artiste |
-
-### 💝 Liste de Souhaits
-
-- Ajout de vinyles recherchés avec niveau de priorité (ex. : *"À acheter rapidement"*)
-- **Alertes de disponibilité** : notification push si un vinyle souhaité apparaît sur Discogs ou eBay
-- **Suivi des prix** : historique et évolution du prix pour chaque vinyle suivi
-
-### 🤝 Fonctionnalités Sociales
-
-- **Partage de collection** : export PDF ou lien public partageable
-- **Messagerie intégrée** : échanges directs entre utilisateurs pour proposer des ventes ou trocs
-- **Communauté** : forum ou groupes de discussion organisés par genre ou artiste
-
-### ⚙️ Fonctionnalités Techniques Avancées
-
-- **Mode hors ligne** : accès complet à la collection sans connexion internet (Firebase offline persistence)
-- **Sauvegarde automatique** : synchronisation cloud via Firebase ou export local
-- **Intégrations** : synchronisation avec Discogs (métadonnées), Spotify (extraits audio)
+- **Export** : Export de la collection au format **CSV** ou **JSON**.
+- **Import** : Import de données depuis un fichier **CSV** ou **JSON**.
 
 ---
 
-## 🏗️ Architecture
+## 🛠 **Technologies Utilisées**
 
-L'application suit une architecture **Clean Architecture** avec séparation claire des couches :
+### Frontend
 
-```
-Presentation Layer  ──→  Flutter Widgets + BLoC / Riverpod
-        ↓
-Domain Layer        ──→  Use Cases, Entities, Repository Interfaces
-        ↓
-Data Layer          ──→  Firebase (Firestore, Auth, Storage), API clients (Discogs, Spotify)
-```
+- **Framework** : [Vue.js 3](https://vuejs.org/) (Composition API)
+- **UI Library** : [Quasar Framework](https://quasar.dev/) (pour une expérience mobile et desktop optimisée)
+- **State Management** : [Pinia](https://pinia.vuejs.org/) (pour la gestion d'état)
+- **Routing** : [Vue Router](https://router.vuejs.org/)
+- **Styling** : CSS/SCSS avec [Tailwind CSS](https://tailwindcss.com/) (optionnel)
 
-### Stack technique
+### Backend
 
-| Couche | Technologie |
-|---|---|
-| **Frontend mobile** | Flutter 3.x (Dart) |
-| **Authentification** | Firebase Authentication (Email/Password, Google Sign-In, Apple Sign-In) |
-| **Base de données** | Cloud Firestore (NoSQL, temps réel) |
-| **Stockage fichiers** | Firebase Storage (photos de pochettes) |
-| **Notifications push** | Firebase Cloud Messaging (FCM) |
-| **Backend serverless** | Firebase Cloud Functions (Node.js) |
-| **API Vinyles** | Discogs API (métadonnées, cotes) |
-| **API Audio** | Spotify Web API (extraits 30 secondes) |
-| **Scan** | `flutter_barcode_scanner` + ML Kit (Google) |
+- **Base de données** : [Firebase Realtime Database](https://firebase.google.com/docs/database) (pour le stockage des données)
+- **Authentification** : [Firebase Authentication](https://firebase.google.com/docs/auth) (email/mot de passe)
+- **Stockage** : [Firebase Storage](https://firebase.google.com/docs/storage) (pour les images des pochettes)
+
+### Outils de Développement
+
+- **Build Tool** : [Vite](https://vitejs.dev/)
+- **Testing** : [Vitest](https://vitest.dev/) (pour les tests unitaires)
+- **Linting** : [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/)
 
 ---
 
-## 📋 Prérequis
+## 🚀 **Installation et Exécution**
 
-Avant de cloner ce dépôt, assurez-vous d'avoir installé :
+### Prérequis
 
-- [Flutter SDK](https://flutter.dev/docs/get-started/install) ≥ 3.0.0
-- [Dart SDK](https://dart.dev/get-dart) ≥ 3.0.0 (inclus avec Flutter)
-- [Android Studio](https://developer.android.com/studio) ou [Xcode](https://developer.apple.com/xcode/) (pour iOS)
-- [Firebase CLI](https://firebase.google.com/docs/cli) ≥ 12.0.0
-- Un compte [Firebase](https://console.firebase.google.com/) (plan Spark gratuit ou Blaze)
-- Un compte développeur [Discogs](https://www.discogs.com/developers/) (clé API gratuite)
-- Un compte développeur [Spotify](https://developer.spotify.com/) (Client ID + Secret)
+- Node.js (version 16 ou supérieure)
+- npm ou yarn
+- Un projet Firebase configuré (voir [Configuration Firebase](#-configuration-firebase))
 
-```bash
-# Vérifier les prérequis Flutter
-flutter doctor
-```
+### Étapes d'installation
 
----
-
-## 🚀 Installation
-
-### 1. Cloner le dépôt
-
-```bash
-git clone https://github.com/votre-organisation/vinyl-record-collection.git
-cd vinyl-record-collection
-```
-
-### 2. Installer les dépendances
-
-```bash
-flutter pub get
-```
-
-### 3. Configurer les variables d'environnement
-
-Dupliquer le fichier d'exemple et renseigner vos clés :
-
-```bash
-cp .env.example .env
-```
-
-```dotenv
-# .env
-DISCOGS_API_KEY=votre_cle_discogs
-DISCOGS_API_SECRET=votre_secret_discogs
-SPOTIFY_CLIENT_ID=votre_client_id_spotify
-SPOTIFY_CLIENT_SECRET=votre_client_secret_spotify
-```
-
-> ⚠️ **Important** : Ne commitez jamais le fichier `.env`. Il est déjà listé dans `.gitignore`.
-
-### 4. Lancer l'application
-
-```bash
-# Android
-flutter run --flavor development
-
-# iOS
-flutter run --flavor development --target lib/main_dev.dart
-```
+1. **Cloner le dépôt**
+  ```bash
+   git clone https://github.com/votre-utilisateur/vinyl-record-collection.git
+   cd vinyl-record-collection
+  ```
+2. **Installer les dépendances**
+  ```bash
+   npm install
+   # ou
+   yarn install
+  ```
+3. **Configurer Firebase**
+  - Créez un projet sur [Firebase Console](https://console.firebase.google.com/).
+  - Activez **Authentication** (méthode email/mot de passe) et **Realtime Database**.
+  - Copiez les clés de configuration de votre projet Firebase dans un fichier `.env` à la racine du projet :
+    ```env
+    VITE_FIREBASE_API_KEY=votre_api_key
+    VITE_FIREBASE_AUTH_DOMAIN=votre_auth_domain
+    VITE_FIREBASE_PROJECT_ID=votre_project_id
+    VITE_FIREBASE_STORAGE_BUCKET=votre_storage_bucket
+    VITE_FIREBASE_MESSAGING_SENDER_ID=votre_messaging_sender_id
+    VITE_FIREBASE_APP_ID=votre_app_id
+    VITE_FIREBASE_DATABASE_URL=votre_database_url
+    ```
+4. **Lancer l'application en mode développement**
+  ```bash
+   npm run dev
+   # ou
+   yarn dev
+  ```
+   L'application sera accessible à l'adresse `http://localhost:5173`.
 
 ---
 
-## 🔥 Configuration Firebase
-
-### Créer le projet Firebase
-
-```bash
-# Se connecter à Firebase
-firebase login
-
-# Initialiser Firebase dans le projet
-firebase init
-```
-
-Activez les services suivants dans la [Firebase Console](https://console.firebase.google.com/) :
-- **Authentication** (Email/Password + Google + Apple)
-- **Cloud Firestore** (mode production)
-- **Firebase Storage**
-- **Cloud Messaging** (FCM)
-- **Cloud Functions**
-
-### Ajouter les fichiers de configuration
-
-**Android** — télécharger `google-services.json` et le placer dans :
-```
-android/app/google-services.json
-```
-
-**iOS** — télécharger `GoogleService-Info.plist` et le placer dans :
-```
-ios/Runner/GoogleService-Info.plist
-```
-
-### Règles Firestore
-
-Les règles de sécurité Firestore sont définies dans `firestore.rules`. Déployer avec :
-
-```bash
-firebase deploy --only firestore:rules
-```
-
-Exemple de structure des règles :
-
-```javascript
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    // Un utilisateur ne peut accéder qu'à sa propre collection
-    match /users/{userId}/records/{recordId} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
-    }
-    // Liste de souhaits privée
-    match /users/{userId}/wishlist/{itemId} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
-    }
-    // Collections publiques (lecture seule si partagées)
-    match /publicCollections/{docId} {
-      allow read: if true;
-      allow write: if request.auth != null;
-    }
-  }
-}
-```
-
----
-
-## 📁 Structure du projet
+## 📂 **Structure du Projet**
 
 ```
 vinyl-record-collection/
-├── lib/
-│   ├── main.dart                    # Point d'entrée
-│   ├── main_dev.dart                # Entrée – env. développement
-│   ├── core/
-│   │   ├── constants/               # Constantes globales (couleurs, routes…)
-│   │   ├── errors/                  # Gestion centralisée des erreurs
-│   │   ├── network/                 # Client HTTP, intercepteurs
-│   │   └── utils/                   # Helpers, extensions Dart
-│   ├── features/
-│   │   ├── auth/                    # Authentification (login, register, profil)
-│   │   ├── collection/              # Ma Collection (CRUD vinyles)
-│   │   ├── wishlist/                # Liste de souhaits + alertes prix
-│   │   ├── scanner/                 # Scan code-barres & reconnaissance visuelle
-│   │   ├── community/               # Forum, messagerie, échanges
-│   │   └── settings/                # Paramètres, thème, compte, RGPD
-│   └── shared/
-│       ├── widgets/                 # Composants UI réutilisables
-│       ├── models/                  # Modèles de données partagés
-│       └── services/                # Services transverses (Firebase, Discogs, Spotify)
-├── test/
-│   ├── unit/                        # Tests unitaires
-│   ├── widget/                      # Tests de widgets
-│   └── integration/                 # Tests d'intégration
-├── functions/                       # Firebase Cloud Functions (Node.js)
-├── firestore.rules                  # Règles de sécurité Firestore
-├── storage.rules                    # Règles Firebase Storage
-├── firebase.json                    # Configuration Firebase CLI
-├── pubspec.yaml                     # Dépendances Flutter
-├── .env.example                     # Exemple de variables d'environnement
-└── README.md
+├── public/                  # Fichiers statiques
+├── src/
+│   ├── assets/              # Images, polices, etc.
+│   ├── components/          # Composants Vue réutilisables
+│   ├── composables/         # Logique réutilisable (Composition API)
+│   ├── layouts/             # Mises en page (ex: layout principal)
+│   ├── pages/               # Pages de l'application
+│   │   ├── HomePage.vue     # Page d'accueil
+│   │   ├── CollectionPage.vue # Page de la discothèque
+│   │   ├── WishlistPage.vue  # Page de la liste de souhaits
+│   │   ├── LoginPage.vue    # Page de connexion
+│   │   └── ProfilePage.vue  # Page du profil utilisateur
+│   ├── router/              # Configuration du routeur
+│   ├── stores/              # Stores Pinia
+│   ├── utils/               # Fonctions utilitaires
+│   ├── App.vue              # Composant racine
+│   └── main.js              # Point d'entrée de l'application
+├── .env                     # Variables d'environnement
+├── vite.config.js           # Configuration de Vite
+└── package.json             # Dépendances et scripts
 ```
 
 ---
 
-## 🔌 API externes
+## 🔧 **Configuration Firebase**
 
-### Discogs API
-
-Utilisée pour récupérer automatiquement les métadonnées des vinyles (artiste, label, année, genre, valeur marchande).
-
-- Documentation : [https://www.discogs.com/developers/](https://www.discogs.com/developers/)
-- Authentification : OAuth 1.0 ou jeton personnel
-- Quota : 60 requêtes/minute (plan gratuit)
-
-### Spotify Web API
-
-Utilisée pour afficher des extraits audio de 30 secondes directement dans la fiche vinyle.
-
-- Documentation : [https://developer.spotify.com/documentation/web-api/](https://developer.spotify.com/documentation/web-api/)
-- Authentification : OAuth 2.0 (Client Credentials Flow)
-- Scope minimal requis : `user-read-playback-state`
-
----
-
-## 🔒 Sécurité & RGPD
-
-### Authentification
-
-- Connexion via **Email/Mot de passe**, **Google** ou **Apple**
-- Sessions gérées par Firebase Authentication avec tokens JWT
-
-### Chiffrement
-
-- Les données sensibles (valeur estimée des collections) sont chiffrées côté client avant écriture dans Firestore
-- Les communications sont chiffrées en transit via HTTPS/TLS (géré par Firebase)
-
-### Conformité RGPD
-
-| Droit | Implémentation |
-|---|---|
-| Droit d'accès | Export de toutes les données depuis *Paramètres > Mon compte > Exporter mes données* |
-| Droit à l'oubli | Suppression complète du compte et de toutes les données associées depuis *Paramètres > Supprimer mon compte* |
-| Consentement | Bandeau de consentement lors du premier lancement, opt-in explicite pour les notifications |
-| Portabilité | Export JSON ou PDF de la collection |
+1. **Créer un projet Firebase**
+  - Allez sur [Firebase Console](https://console.firebase.google.com/) et créez un nouveau projet.
+2. **Activer les services nécessaires**
+  - **Authentication** : Activez la méthode de connexion par **email/mot de passe**.
+  - **Realtime Database** : Créez une base de données en mode **test** (pour le développement) ou **verrouillé** (pour la production). Configurez les règles de sécurité comme suit pour le développement :
+    ```json
+    {
+      "rules": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    }
+    ```
+  - **Storage** : Activez Firebase Storage pour stocker les images des pochettes.
+3. **Ajouter les clés de configuration**
+  - Dans votre projet Firebase, allez dans **Paramètres du projet** > **Vos applications** > **Ajouter une application web**.
+  - Copiez les clés de configuration et ajoutez-les dans votre fichier `.env` (voir [Installation](#-installation-et-exécution)).
 
 ---
 
-## 🧪 Tests
+## 📱 **Fonctionnalités Futures**
 
-```bash
-# Tests unitaires
-flutter test test/unit/
-
-# Tests de widgets
-flutter test test/widget/
-
-# Tests d'intégration (émulateur requis)
-flutter test integration_test/
-
-# Couverture de code
-flutter test --coverage
-genhtml coverage/lcov.info -o coverage/html
-```
+- **Scan de code-barres** : Ajout de vinyles via scan de code-barres ou QR code.
+- **Reconnaissance visuelle** : Ajout de vinyles via une photo de la pochette.
+- **Intégration avec Discogs** : Récupération automatique des métadonnées.
+- **Synchronisation cloud** : Sauvegarde automatique sur Firebase.
+- **Alertes de disponibilité** : Notifications si un vinyle souhaité est disponible en ligne.
+- **Communauté** : Partage de collections et échanges entre utilisateurs.
 
 ---
 
-## 🗓️ Roadmap
+## 🤝 **Contribution**
 
-### v1.0 — MVP (en cours)
-- [x] Authentification Firebase
-- [x] CRUD de la collection (ajout, modification, suppression)
-- [x] Scan code-barres
-- [x] Intégration Discogs API
-- [ ] Liste de souhaits
-- [ ] Mode hors ligne
+Les contributions sont les bienvenues ! Voici comment contribuer :
 
-### v1.1 — Fonctionnalités sociales
-- [ ] Messagerie entre utilisateurs
-- [ ] Partage de collection (lien public / PDF)
-- [ ] Forum communauté
-
-### v1.2 — Intelligence & Intégrations
-- [ ] Reconnaissance visuelle de pochette (ML Kit)
-- [ ] Alertes de prix (Discogs + eBay)
-- [ ] Extraits Spotify
-
-### v2.0 — Marché intégré
-- [ ] Marketplace interne (vente entre utilisateurs)
-- [ ] Système de notation des vendeurs
-- [ ] Paiement sécurisé
+1. Forker le projet.
+2. Créer une branche pour votre fonctionnalité (`git checkout -b feature/ma-fonctionnalité`).
+3. Commiter vos modifications (`git commit -m "Ajout de ma fonctionnalité"`).
+4. Pousser vers la branche (`git push origin feature/ma-fonctionnalité`).
+5. Ouvrir une **Pull Request**.
 
 ---
 
-## 🤝 Contribuer
+## 📜 **Licence**
 
-Les contributions sont les bienvenues ! Merci de suivre le processus ci-dessous.
-
-### Processus de contribution
-
-1. **Forker** le dépôt
-2. **Créer** une branche feature : `git checkout -b feature/ma-nouvelle-fonctionnalite`
-3. **Committer** vos changements : `git commit -m "feat: ajout de la reconnaissance visuelle"`
-4. **Pousser** la branche : `git push origin feature/ma-nouvelle-fonctionnalite`
-5. **Ouvrir** une Pull Request vers la branche `develop`
-
-### Convention de commits (Conventional Commits)
-
-```
-feat:     Nouvelle fonctionnalité
-fix:      Correction de bug
-docs:     Mise à jour de la documentation
-style:    Formatage (sans changement de logique)
-refactor: Refactoring sans ajout de fonctionnalité
-test:     Ajout ou modification de tests
-chore:    Tâches de maintenance (dépendances, CI…)
-```
-
-### Standards de code
-
-- Respecter les règles définies dans `analysis_options.yaml`
-- Formater le code avec `dart format .` avant tout commit
-- Ajouter des tests unitaires pour toute nouvelle logique métier
-- Documenter les méthodes publiques avec des commentaires Dart Doc
+Ce projet est sous licence **MIT**. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
 
 ---
 
-## 📄 Licence
-
-Ce projet est distribué sous licence **MIT**. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
-
----
-
-## 📞 Contact & Support
-
-- **Bugs & Suggestions** : [Ouvrir une issue](https://github.com/votre-organisation/vinyl-record-collection/issues)
-- **Discussions** : [GitHub Discussions](https://github.com/votre-organisation/vinyl-record-collection/discussions)
-- **Email** : support@vinyl-record-collection.app
-
----
-
-<p align="center">
-  Fait avec ❤️ par des passionnés de vinyles · Flutter + Firebase
-</p>
+**✨ Merci d'utiliser Vinyl Record Collection !**  
+Pour toute question ou suggestion, n'hésitez pas à ouvrir une **issue** ou à nous contacter.
